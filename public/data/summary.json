@@ -1,75 +1,85 @@
 {
-  "total_mcqs": 14025,
-  "subjects": {
-    "ai-ml": {
+  "totalQuestions": 13123,
+  "subjects": [
+    {
       "subject": "AI / Machine Learning & Data Analytics",
-      "basic": 517,
-      "intermediate": 575,
-      "expert": 510,
-      "total": 1602
+      "slug": "ai-ml",
+      "basic": 490,
+      "intermediate": 561,
+      "expert": 508,
+      "total": 1559
     },
-    "computer-networks": {
+    {
       "subject": "Computer Networks & Cloud Computing",
-      "basic": 307,
-      "intermediate": 306,
-      "expert": 300,
-      "total": 913
+      "slug": "computer-networks",
+      "basic": 283,
+      "intermediate": 286,
+      "expert": 291,
+      "total": 860
     },
-    "cyber-security": {
+    {
       "subject": "Cyber Security",
-      "basic": 487,
-      "intermediate": 517,
-      "expert": 480,
-      "total": 1484
+      "slug": "cyber-security",
+      "basic": 430,
+      "intermediate": 479,
+      "expert": 478,
+      "total": 1387
     },
-    "databases": {
+    {
       "subject": "Databases",
-      "basic": 517,
-      "intermediate": 570,
-      "expert": 510,
-      "total": 1597
+      "slug": "databases",
+      "basic": 501,
+      "intermediate": 554,
+      "expert": 509,
+      "total": 1564
     },
-    "dsa": {
+    {
       "subject": "Data Structures & Algorithms",
-      "basic": 367,
-      "intermediate": 421,
-      "expert": 360,
-      "total": 1148
+      "slug": "dsa",
+      "basic": 324,
+      "intermediate": 384,
+      "expert": 334,
+      "total": 1042
     },
-    "operating-systems": {
+    {
       "subject": "Operating Systems",
-      "basic": 367,
-      "intermediate": 423,
-      "expert": 360,
-      "total": 1150
+      "slug": "operating-systems",
+      "basic": 346,
+      "intermediate": 404,
+      "expert": 353,
+      "total": 1103
     },
-    "problem-solving": {
+    {
       "subject": "Problem Solving & Analytical Skills",
-      "basic": 487,
-      "intermediate": 545,
-      "expert": 480,
-      "total": 1512
+      "slug": "problem-solving",
+      "basic": 450,
+      "intermediate": 518,
+      "expert": 471,
+      "total": 1439
     },
-    "programming": {
+    {
       "subject": "Programming (C++, Java, Python)",
-      "basic": 487,
-      "intermediate": 543,
-      "expert": 480,
-      "total": 1510
+      "slug": "programming",
+      "basic": 419,
+      "intermediate": 485,
+      "expert": 465,
+      "total": 1369
     },
-    "software-engineering": {
+    {
       "subject": "Software Engineering",
-      "basic": 487,
-      "intermediate": 544,
-      "expert": 480,
-      "total": 1511
+      "slug": "software-engineering",
+      "basic": 394,
+      "intermediate": 494,
+      "expert": 458,
+      "total": 1346
     },
-    "web-development": {
+    {
       "subject": "Web Development",
-      "basic": 517,
-      "intermediate": 571,
-      "expert": 510,
-      "total": 1598
+      "slug": "web-development",
+      "basic": 429,
+      "intermediate": 532,
+      "expert": 493,
+      "total": 1454
     }
-  }
+  ]
 }
