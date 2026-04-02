@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Flag, Clock, CheckCircle, XCircle, AlertTriangle, ChevronDown, ChevronUp, BookOpen, Info } from 'lucide-react';
 import PixelButton from '../components/ui/PixelButton';
@@ -14,44 +14,52 @@ const Quiz: React.FC = () => {
   const [showConfirmSubmit, setShowConfirmSubmit] = useState(false);
   const [showNavigator, setShowNavigator] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
-  const [configLoaded, setConfigLoaded] = useState(false);
 
-  // Load config from sessionStorage
-  const configStr = sessionStorage.getItem('quizConfig');
-  const config: QuizConfig | null = configStr ? JSON.parse(configStr) : null;
+  // Parse config ONCE and memoize — prevents new object reference every render
+  const config = useMemo<QuizConfig | null>(() => {
+    try {
+      const stored = sessionStorage.getItem('quizConfig');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
+  }, []);
 
   const timer = useTimer(
     config?.timerEnabled ?? false,
     config?.timerMinutes ?? 0
   );
 
-  // Start quiz on mount
+  // Use a ref to track initialization — immune to re-render races
+  const initRef = useRef(false);
+
+  // Start quiz on mount — no dependencies that change between renders
   useEffect(() => {
-    if (configLoaded) return;
+    if (initRef.current) return;
     if (!config) {
-      navigate('/setup');
+      navigate('/setup', { replace: true });
       return;
     }
-    setConfigLoaded(true);
+    initRef.current = true;
     quiz.startQuiz(config).then(() => {
       timer.start();
     });
-  }, [config, configLoaded]);
+  }, [config, navigate, quiz, timer]);
 
   // Handle timer expiry
   useEffect(() => {
     if (timer.isExpired && quiz.state === 'active') {
       quiz.finishQuiz(config?.timerMinutes ? config.timerMinutes * 60 : 0);
     }
-  }, [timer.isExpired, quiz.state]);
+  }, [timer.isExpired, quiz.state, quiz.finishQuiz, config]);
 
-  // Store result when quiz finishes
+  // Store result when quiz finishes and navigate
   useEffect(() => {
     if (quiz.state === 'finished' && quiz.result) {
       sessionStorage.setItem('quizResult', JSON.stringify(quiz.result));
-      navigate('/results');
+      navigate('/results', { replace: true });
     }
-  }, [quiz.state, quiz.result]);
+  }, [quiz.state, quiz.result, navigate]);
 
   const handleSubmit = useCallback(() => {
     const elapsed = timer.getElapsed();
@@ -59,7 +67,7 @@ const Quiz: React.FC = () => {
   }, [quiz, timer]);
 
   const handleSelectAnswer = useCallback((letter: string) => {
-    if (quiz.currentAnswer?.selectedOption !== null) return; // Already answered
+    if (quiz.currentAnswer?.selectedOption !== null) return;
     quiz.selectAnswer(letter);
     setShowExplanation(true);
   }, [quiz]);
@@ -80,8 +88,8 @@ const Quiz: React.FC = () => {
     setShowNavigator(false);
   }, [quiz]);
 
-  // Loading state
-  if (quiz.state === 'loading') {
+  // Loading state — covers both 'idle' (pre-effect) and 'loading' (fetching data)
+  if (quiz.state === 'idle' || quiz.state === 'loading') {
     return (
       <div className="min-h-[100dvh] flex items-center justify-center py-24">
         <div className="text-center">
