@@ -1,0 +1,75 @@
+{
+  "total_mcqs": 14025,
+  "subjects": {
+    "ai-ml": {
+      "subject": "AI / Machine Learning & Data Analytics",
+      "basic": 517,
+      "intermediate": 575,
+      "expert": 510,
+      "total": 1602
+    },
+    "computer-networks": {
+      "subject": "Computer Networks & Cloud Computing",
+      "basic": 307,
+      "intermediate": 306,
+      "expert": 300,
+      "total": 913
+    },
+    "cyber-security": {
+      "subject": "Cyber Security",
+      "basic": 487,
+      "intermediate": 517,
+      "expert": 480,
+      "total": 1484
+    },
+    "databases": {
+      "subject": "Databases",
+      "basic": 517,
+      "intermediate": 570,
+      "expert": 510,
+      "total": 1597
+    },
+    "dsa": {
+      "subject": "Data Structures & Algorithms",
+      "basic": 367,
+      "intermediate": 421,
+      "expert": 360,
+      "total": 1148
+    },
+    "operating-systems": {
+      "subject": "Operating Systems",
+      "basic": 367,
+      "intermediate": 423,
+      "expert": 360,
+      "total": 1150
+    },
+    "problem-solving": {
+      "subject": "Problem Solving & Analytical Skills",
+      "basic": 487,
+      "intermediate": 545,
+      "expert": 480,
+      "total": 1512
+    },
+    "programming": {
+      "subject": "Programming (C++, Java, Python)",
+      "basic": 487,
+      "intermediate": 543,
+      "expert": 480,
+      "total": 1510
+    },
+    "software-engineering": {
+      "subject": "Software Engineering",
+      "basic": 487,
+      "intermediate": 544,
+      "expert": 480,
+      "total": 1511
+    },
+    "web-development": {
+      "subject": "Web Development",
+      "basic": 517,
+      "intermediate": 571,
+      "expert": 510,
+      "total": 1598
+    }
+  }
+}

@@ -1,0 +1,145 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* DAY THEME (Default) */
+  --color-pastel-blue: #A8DAFF;
+  --color-pastel-lavender: #C9B6E4;
+  --color-pastel-mint: #B4E4C1;
+  --color-pastel-peach: #FFB5A7;
+  --color-pastel-cream: #FFF8E7;
+  --color-pastel-gray: #E8E8E8;
+  --color-pastel-charcoal: #4A4A4A;
+  --color-pastel-dark: #2D2D2D;
+  --color-pastel-surface: #FFFFFF;
+  --shadow-color: rgba(0,0,0,0.3);
+
+  /* Footer Specific Colors (Day) */
+  --color-footer-bg: #4A4A4A;
+  --color-footer-text: #FFF8E7;
+  --color-footer-muted: #E8E8E8;
+  --color-footer-shadow: #2D2D2D;
+}
+
+.theme-night {
+  /* NIGHT THEME (Cyberpunk / Vaporwave) */
+  --color-pastel-blue: #00E5FF;
+  --color-pastel-lavender: #D500F9;
+  --color-pastel-mint: #00E676;
+  --color-pastel-peach: #FF3D00;
+  
+  --color-pastel-cream: #100b21;
+  --color-pastel-gray: #2a2438;
+  
+  --color-pastel-charcoal: #F5F5F5;
+  --color-pastel-dark: #FFFFFF;
+  --color-pastel-surface: #1e1633;
+  
+  --shadow-color: #D500F9;
+
+  /* Footer Specific Colors (Night) */
+  --color-footer-bg: #05020c;
+  --color-footer-text: #E0E0E0;
+  --color-footer-muted: #94a3b8;
+  --color-footer-shadow: #D500F9;
+}
+
+html {
+  overflow-y: overlay;
+  background-color: var(--color-pastel-cream);
+  transition: background-color 0.5s ease;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: var(--color-pastel-cream);
+  color: var(--color-pastel-charcoal);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pixel-antialiased {
+  image-rendering: pixelated;
+}
+
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Performance Optimized Particle Animation */
+@keyframes particle-float {
+  0% {
+    transform: translate3d(0, 110vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(var(--tx), -10vh, 0) rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-20vw);
+  }
+  to {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+}
